@@ -8,7 +8,7 @@ downstreamJobName = 'deis-com-deploy'
 job(name) {
   description """
     <ol>
-      <li>Watches the <a href="https://github.com/deis/${name}">${name}</a> repo for a commit to master</li>
+      <li>Watches the <a href="https://github.com/deisthree/${name}">${name}</a> repo for a commit to master</li>
       <li>Kicks off downstream ${downstreamJobName} job to deploy docs</li>
     </ol>
   """.stripIndent().trim()

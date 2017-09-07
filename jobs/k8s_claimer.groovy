@@ -188,7 +188,7 @@ job('k8s-claimer-build-cli') {
 
 job('k8s-claimer-deploy') {
   description """
-  <p>Compiles and deploys <a href="https://github.com/deis/k8s-claimer">k8s-claimer</a>
+  <p>Compiles and deploys <a href="https://github.com/deisthree/k8s-claimer">k8s-claimer</a>
     to the Deis Workflow staging cluster.
   </p>
   <p>

@@ -7,7 +7,7 @@ name = 'jenkins-jobs-pr'
 job(name) {
   description """
     <ol>
-      <li>Watches the <a href="https://github.com/deis/jenkins-jobs">jenkins-jobs</a> repo for a PR commit</li>
+      <li>Watches the <a href="https://github.com/deisthree/jenkins-jobs">jenkins-jobs</a> repo for a PR commit</li>
       <li>and runs tests against changes</li>
     </ol>
   """.stripIndent().trim()

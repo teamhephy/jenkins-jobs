@@ -98,7 +98,7 @@ repos.each { Map repo ->
             # checkout PR commit if repo_type 'pr' and value of commit env var non-null
             if [ "\${CHART_REPO_TYPE}" == 'pr' ] && [ -n "\${${repo.commitEnvVar}}" ]; then
               echo "Fetching PR changes from repo '${repo.name}' at commit \${${repo.commitEnvVar}}" 1>&2
-              git fetch -q --tags --progress https://github.com/deis/${repo.name}.git +refs/pull/*:refs/remotes/origin/pr/*
+              git fetch -q --tags --progress https://github.com/deisthree/${repo.name}.git +refs/pull/*:refs/remotes/origin/pr/*
               git checkout "\${${repo.commitEnvVar}}"
             fi
 

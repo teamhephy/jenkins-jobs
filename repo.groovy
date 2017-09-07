@@ -110,7 +110,7 @@ repos = [
     chart: 'registry',
   ],
 
-  // TODO: remove when https://github.com/deis/workflow/issues/766 is resolved
+  // TODO: remove when https://github.com/deisthree/workflow/issues/766 is resolved
   [ name: 'registry-proxy',
     components: [[name: 'registry-proxy']],
     slackChannel: '#workflow',

@@ -9,7 +9,7 @@ slackChannel = '#marketing'
 job("deis-io-merge") {
   description """
     <ol>
-      <li>Watches the <a href="https://github.com/deis/${repo_name}">${repo_name}</a> repo for a commit to gh-pages</li>
+      <li>Watches the <a href="https://github.com/deisthree/${repo_name}">${repo_name}</a> repo for a commit to gh-pages</li>
       <li>Kicks off downstream ${downstreamJobName} job to deploy</li>
     </ol>
   """.stripIndent().trim()
