@@ -12,7 +12,7 @@ job(name) {
   scm {
     git {
       remote {
-        github("deis/e2e-runner")
+        github("teamhephy/e2e-runner")
       }
       branch('master')
     }
@@ -24,7 +24,7 @@ job(name) {
 
   parameters {
     stringParam('RELEASE', "dev", "Release string for resolving workflow-[release](-e2e) charts")
-    stringParam('E2E_RUNNER_IMAGE', 'quay.io/deisci/e2e-runner:canary', "The e2e-runner image")
+    stringParam('E2E_RUNNER_IMAGE', 'quay.io/hephyci/e2e-runner:canary', "The e2e-runner image")
     stringParam('E2E_DIR', '/home/jenkins/workspace/$JOB_NAME/$BUILD_NUMBER', "Directory for storing workspace files")
     stringParam('E2E_DIR_LOGS', '${E2E_DIR}/logs', "Directory for storing logs. This directory is mounted into the e2e-runner container")
     stringParam('CLOUD_PROVIDER', defaults.e2eRunner.provider)

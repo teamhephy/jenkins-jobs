@@ -1,18 +1,18 @@
 
-|![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Warning.svg/156px-Warning.svg.png) | Deis Workflow will soon no longer be maintained.<br />Please [read the announcement](https://deis.com/blog/2017/deis-workflow-final-release/) for more detail. |
+|![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Warning.svg/156px-Warning.svg.png) | Hephy Workflow is coming soon.<br />Please [wait patiently for the announcement](https://teamhephy.com) while we clear our dust. |
 |---:|---|
 | 09/07/2017 | Deis Workflow [v2.18][] final release before entering maintenance mode |
 | 03/01/2018 | End of Workflow maintenance: critical patches no longer merged |
 
-# Deis Workflow Jenkins Jobs
+# Hephy Workflow Jenkins Jobs
 
-Deis (pronounced DAY-iss) Workflow is an open source Platform as a Service (PaaS) that adds a developer-friendly layer to any [Kubernetes](http://kubernetes.io) cluster, making it easy to deploy and manage applications on your own servers.
+Hephy (<strike>pronounced DAY-iss</strike>) Workflow is an open source Platform as a Service (PaaS) that adds a developer-friendly layer to any [Kubernetes](http://kubernetes.io) cluster, making it easy to deploy and manage applications on your own servers.  Hephy is a derivative fork of Deis Workflow v2 PaaS.
 
-For more information about the Deis Workflow, please visit the main project page at https://github.com/deisthree/workflow.
+For more information about the Hephy Workflow, please visit the main project page at https://github.com/teamhephy/workflow.
 
 # About
 
-This repository serves as a central location for [Deis Workflow Jenkins jobs](https://ci.deis.io) represented in [Jenkins Job DSL](https://github.com/jenkinsci/job-dsl-plugin).
+This repository serves as a central location for [Hephy Workflow Jenkins jobs](https://example.com/coming-soon) represented in [Jenkins Job DSL](https://github.com/jenkinsci/job-dsl-plugin).
 
 ## Resources
 
@@ -62,7 +62,7 @@ To do so, one would update/add the appropriate plugin in `build.gradle` and then
 ## Flow
 
 As a standard practice, the initial job will describe the pipeline, in the form of `downstreamParameterized` steps
-that follow the main steps of the job itself.  See the [Workflow component job](https://github.com/deisthree/jenkins-jobs/blob/master/jobs/component_jobs.groovy) as an example.  Most of the downstream jobs are then set up to only execute their specific job logic, and not add further downstream dependencies that might be different from what the initial job specifies.
+that follow the main steps of the job itself.  See the [Workflow component job](https://github.com/teamhephy/jenkins-jobs/blob/master/jobs/component_jobs.groovy) as an example.  Most of the downstream jobs are then set up to only execute their specific job logic, and not add further downstream dependencies that might be different from what the initial job specifies.
 
 (The pipelines below can also be found in their original `.monopic` format if needing to change/update.)
 
@@ -288,4 +288,4 @@ that follow the main steps of the job itself.  See the [Workflow component job](
 [bats]: https://github.com/sstephenson/bats
 [shellcheck]: https://github.com/koalaman/shellcheck
 [gradle-prereqs]: https://docs.gradle.org/current/userguide/installation.html#sec:prerequisites
-[v2.18]: https://github.com/deisthree/workflow/releases/tag/v2.18.0
+[v2.18]: https://github.com/teamhephy/workflow/releases/tag/v2.18.0

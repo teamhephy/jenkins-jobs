@@ -3,7 +3,7 @@ if (!new File("${workspace}/common.groovy").canRead()) { workspace = "${WORKSPAC
 evaluate(new File("${workspace}/common.groovy"))
 
 job("helm-chart-verify") {
-  description "Verifies a signed Deis Helm chart"
+  description "Verifies a signed Hephy Helm chart"
 
   publishers {
     postBuildScripts {
@@ -65,7 +65,7 @@ job("helm-chart-verify") {
         mkdir -p "${HOME}/.gnupg"
         touch "${HOME}/.gnupg/pubring.gpg"
 
-        helm repo add "${CHART}" https://charts.deis.com/"${CHART_REPO}"
+        helm repo add "${CHART}" https://charts.teamhephy.com/"${CHART_REPO}"
         helm fetch --verify "${CHART_REPO}"/"${CHART}" --version "${RELEASE_TAG}"
       '''.stripIndent().trim()
   }
