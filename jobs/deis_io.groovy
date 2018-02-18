@@ -109,7 +109,7 @@ job("teamhephy-info-pr") {
   }
 
   triggers {
-    pullRequest {
+    githubPullRequest {
       admin('teamhephy-admin')
       cron('H/5 * * * *')
       useGitHubHooks()

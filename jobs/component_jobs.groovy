@@ -66,7 +66,7 @@ repos.each { Map repo ->
 
         if (isPR) { // set up GitHubPullRequest build trigger
           triggers {
-            pullRequest {
+            githubPullRequest {
               admin('teamhephy-admin')
               cron('H/5 * * * *')
               useGitHubHooks()
