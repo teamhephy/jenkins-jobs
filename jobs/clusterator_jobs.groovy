@@ -4,7 +4,7 @@ evaluate(new File("${workspace}/common.groovy"))
 
 job("clusterator-create") {
   disabled() // delete this file when ready to fully remove job
-  description "Create a set number of clusters in the deis leasable project. This job runs Monday-Friday at 7AM."
+  description "Create a set number of clusters in the hephy leasable project. This job runs Monday-Friday at 7AM."
 
   logRotator {
     daysToKeep defaults.daysToKeep
@@ -40,14 +40,14 @@ job("clusterator-create") {
       -e NUM_NODES="\${NUM_NODES}" \
       -e MACHINE_TYPE="\${MACHINE_TYPE}" \
       -e VERSION="\${VERSION}" \
-      quay.io/deisci/clusterator:git-b1810a5 create
+      quay.io/kingdonb/clusterator:git-b1810a5 create
     """.stripIndent().trim()
   }
 }
 
 job("clusterator-delete") {
   disabled() // delete this file when ready to fully remove job
-  description "Clean up clusters in the deis leasable project. This job runs Monday-Friday at 7PM."
+  description "Clean up clusters in the hephy leasable project. This job runs Monday-Friday at 7PM."
 
   logRotator {
     daysToKeep defaults.daysToKeep
@@ -70,7 +70,7 @@ job("clusterator-delete") {
       #!/usr/bin/env bash
 
       set -eo pipefail
-      docker run -e GCLOUD_CREDENTIALS="\${GCLOUD_CREDENTIALS}" quay.io/deisci/clusterator:git-b1810a5 delete
+      docker run -e GCLOUD_CREDENTIALS="\${GCLOUD_CREDENTIALS}" quay.io/kingdonb/clusterator:git-b1810a5 delete
     """.stripIndent().trim()
   }
 }

@@ -4,7 +4,7 @@ evaluate(new File("${workspace}/common.groovy"))
 
 job('release-candidate-promote') {
   description """
-    Promotes a release candidate image by retagging with the official semver tag to the production 'deis' registry org on an upstream e2e success
+    Promotes a release candidate image by retagging with the official semver tag to the production 'kingdonb' registry org on an upstream e2e success
   """.stripIndent().trim()
 
 
@@ -34,10 +34,10 @@ job('release-candidate-promote') {
   }
 
   parameters {
-    stringParam('DOCKER_USERNAME', 'deisbot', 'Docker Hub account name')
-    stringParam('DOCKER_EMAIL', 'dummy-address@deis.com', 'Docker Hub email address')
-    stringParam('QUAY_USERNAME', 'deis+jenkins', 'Quay account name')
-    stringParam('QUAY_EMAIL', 'deis+jenkins@deis.com', 'Quay email address')
+    stringParam('DOCKER_USERNAME', 'hephybot', 'Docker Hub account name')
+    stringParam('DOCKER_EMAIL', 'dummy-address@teamhephy.com', 'Docker Hub email address')
+    stringParam('QUAY_USERNAME', 'teamhephy+jenkins', 'Quay account name')
+    stringParam('QUAY_EMAIL', 'team+jenkins@teamhephy.com', 'Quay email address')
     stringParam('COMPONENT_NAME', '', 'Component name')
     stringParam('COMPONENT_SHA', '', 'Commit sha used for candidate image tag')
     stringParam('RELEASE_TAG', '', 'Release tag value for retagging candidate image')

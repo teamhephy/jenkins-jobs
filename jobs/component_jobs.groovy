@@ -20,7 +20,7 @@ repos.each { Map repo ->
         scm {
           git {
             remote {
-              github("deis/${repo.name}")
+              github("teamhephy/${repo.name}")
               credentials(defaults.github.credentialsID)
               if (isPR) {
                 refspec('+refs/pull/*:refs/remotes/origin/pr/*')
@@ -67,11 +67,11 @@ repos.each { Map repo ->
         if (isPR) { // set up GitHubPullRequest build trigger
           triggers {
             pullRequest {
-              admin('deis-admin')
+              admin('teamhephy-admin')
               cron('H/5 * * * *')
               useGitHubHooks()
               triggerPhrase('OK to test')
-              orgWhitelist(['deis'])
+              orgWhitelist(['teamhephy'])
               allowMembersOfWhitelistedOrgsAsAdmin()
               // this plugin will update PR status no matter what,
               // so until we fix this, here are our default messages:
@@ -90,10 +90,10 @@ repos.each { Map repo ->
         }
 
         parameters {
-          stringParam('DOCKER_USERNAME', 'deisbot', 'Docker Hub account name')
-          stringParam('DOCKER_EMAIL', 'dummy-address@deis.com', 'Docker Hub email address')
-          stringParam('QUAY_USERNAME', 'deisci+jenkins', 'Quay account name')
-          stringParam('QUAY_EMAIL', 'deisci+jenkins@deis.com', 'Quay email address')
+          stringParam('DOCKER_USERNAME', 'hephybot', 'Docker Hub account name')
+          stringParam('DOCKER_EMAIL', 'dummy-address@teamhephy.com', 'Docker Hub email address')
+          stringParam('QUAY_USERNAME', 'hephyci+jenkins', 'Quay account name')
+          stringParam('QUAY_EMAIL', 'team+jenkins@teamhephy.com', 'Quay email address')
           stringParam('sha1', 'master', 'Specific Git SHA to test')
         }
 
@@ -148,7 +148,7 @@ repos.each { Map repo ->
 
               ## Build and Push Images
               # (Some repo 'test' targets depend on `make docker-build` be run before)
-              export IMAGE_PREFIX=deisci VERSION="git-\${git_commit:0:7}"
+              export IMAGE_PREFIX=kingdonb VERSION="git-\${git_commit:0:7}"
 
               docker login -e="\$DOCKER_EMAIL" -u="\$DOCKER_USERNAME" -p="\$DOCKER_PASSWORD"
               # build once with "docker --pull --no-cache" to avoid stale layers

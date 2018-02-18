@@ -3,12 +3,12 @@ if (!new File("${workspace}/common.groovy").canRead()) { workspace = "${WORKSPAC
 evaluate(new File("${workspace}/common.groovy"))
 
 name = 'workflow-docs'
-downstreamJobName = 'deis-com-deploy'
+downstreamJobName = 'teamhephy-com-deploy'
 
 job(name) {
   description """
     <ol>
-      <li>Watches the <a href="https://github.com/deisthree/${name}">${name}</a> repo for a commit to master</li>
+      <li>Watches the <a href="https://github.com/teamhephy/${name}">${name}</a> repo for a commit to master</li>
       <li>Kicks off downstream ${downstreamJobName} job to deploy docs</li>
     </ol>
   """.stripIndent().trim()
@@ -16,7 +16,7 @@ job(name) {
   scm {
     git {
       remote {
-        github("deis/workflow")
+        github("teamhephy/workflow")
         credentials(defaults.github.credentialsID)
       }
       branch('${WORKFLOW_BRANCH}')
@@ -43,7 +43,7 @@ job(name) {
   }
 
   publishers {
-    downstream('deis-com-deploy', 'UNSTABLE')
+    downstream('teamhephy-com-deploy', 'UNSTABLE')
   }
 
   steps {

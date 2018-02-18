@@ -2,18 +2,18 @@ def workspace = new File(".").getAbsolutePath()
 if (!new File("${workspace}/common.groovy").canRead()) { workspace = "${WORKSPACE}"}
 evaluate(new File("${workspace}/common.groovy"))
 
-name = 'deis-seed-repos'
+name = 'teamhephy-seed-repos'
 repoName = 'seed-repo'
 
 job(name) {
   description """
-    <p>Runs deis/seed-repo against all of the workflow components.</p>
+    <p>Runs teamhephy/seed-repo against all of the workflow components.</p>
   """.stripIndent().trim()
 
   scm {
     git {
       remote {
-        github("deis/${repoName}")
+        github("teamhephy/${repoName}")
       }
       branch('master')
     }

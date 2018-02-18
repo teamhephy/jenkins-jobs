@@ -6,7 +6,7 @@ def repoName = 'workflow-cli'
 def repo = repos.find{ it.name == repoName }
 
 def gitInfo = [
-  repo: "deis/${repoName}",
+  repo: "teamhephy/${repoName}",
   creds: defaults.github.credentialsID,
   refspec: '+refs/tags/*:refs/remotes/origin/tags/*',
   branch: '*/tags/*',
@@ -173,7 +173,7 @@ downstreamJobs.each{ Map thisJob ->
         set -eo pipefail
 
         git_commit="\$(git checkout "\${TAG}" && git rev-parse HEAD)"
-        revision_image=quay.io/deisci/workflow-cli-dev:"\${git_commit:0:7}"
+        revision_image=quay.io/kingdonb/workflow-cli-dev:"\${git_commit:0:7}"
 
         docker run \
           -e GCS_KEY_JSON=\""\${GCSKEY}"\" \
@@ -200,7 +200,7 @@ downstreamJobs.each{ Map thisJob ->
 
   // darwin-amd64 variants
   job("${thisJob.name}-darwin-amd64") {
-    def workdir = "golang/src/github.com/deis/workflow-cli"
+    def workdir = "golang/src/github.com/teamhephy/workflow-cli"
 
     scm {
       git {
@@ -269,13 +269,13 @@ downstreamJobs.each{ Map thisJob ->
           cd ${workdir}
 
           git_commit="\$(git checkout "\${TAG}" && git rev-parse HEAD)"
-          revision_image=quay.io/deisci/workflow-cli-dev:"\${git_commit:0:7}"
+          revision_image=quay.io/kingdonb/workflow-cli-dev:"\${git_commit:0:7}"
 
           build-darwin-cli-binary ${thisJob.target}
 
           docker run \
             -e GCS_KEY_JSON=\"\${GCSKEY}\" \
-            -v "\${GOPATH}/src/github.com/deis/workflow-cli/_dist":/workdir/_dist \
+            -v "\${GOPATH}/src/github.com/teamhephy/workflow-cli/_dist":/workdir/_dist \
             -w /workdir \
             --rm "\${revision_image}" sh -c '${upload_script}'
         """.stripIndent().trim()

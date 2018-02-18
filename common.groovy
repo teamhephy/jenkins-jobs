@@ -3,7 +3,7 @@ if (!new File("${workspace}/common.groovy").canRead()) { workspace = "${WORKSPAC
 evaluate(new File("${workspace}/repo.groovy"))
 
 defaults = [
-  signingNode: ['deis-signatory'],
+  signingNode: ['hephy-signatory'],
   tmpPath: '/tmp/${JOB_NAME}/${BUILD_NUMBER}',
   envFile: '/tmp/${JOB_NAME}/${BUILD_NUMBER}/env.properties',
   daysToKeep: 14,
@@ -18,7 +18,7 @@ defaults = [
     release: 'stable',
   ],
   slack: [
-    teamDomain: 'deis',
+    teamDomain: 'teamhephy',
     channel: '#testing',
     webhookURL: 'a53b3a9e-d649-4cff-9997-6c24f07743c8',
   ],
@@ -26,7 +26,7 @@ defaults = [
     version: 'v2.6.1',
   ],
   github: [
-    username: 'deis-admin',
+    username: 'teamhephy-admin',
     credentialsID: 'a2eef59f-cede-4190-a096-ea65722e2b83',
     accessTokenCredentialsID: '393d5b89-9da5-410a-a476-94c9f4325217',
   ],

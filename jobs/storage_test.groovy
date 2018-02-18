@@ -12,13 +12,13 @@ def bucketNames = [
 
 job(name) {
   description """
-    <p>Nightly Job runs the <a href="https://github.com/deisthree/workflow-e2e">e2e tests</a> against a <a href="https://github.com/deisthree/charts/tree/master/workflow-dev">workflow-dev</a> chart configured to GCS by default </p>
+    <p>Nightly Job runs the <a href="https://github.com/teamhephy/workflow-e2e">e2e tests</a> against a <a href="https://github.com/teamhephy/charts/tree/master/workflow-dev">workflow-dev</a> chart configured to GCS by default </p>
   """.stripIndent().trim()
 
   scm {
     git {
       remote {
-        github("deis/e2e-runner")
+        github("teamhephy/e2e-runner")
       }
       branch('master')
     }
@@ -31,7 +31,7 @@ job(name) {
   parameters {
    choiceParam('STORAGE_TYPE', ['gcs', 's3'], "storage backend for helm chart, default is gcs")
    stringParam('HELM_VERSION', defaults.helm.version, 'Version of Helm to download/use')
-   stringParam('E2E_RUNNER_IMAGE', 'quay.io/deisci/e2e-runner:canary', "The e2e-runner image")
+   stringParam('E2E_RUNNER_IMAGE', 'quay.io/kingdonb/e2e-runner:canary', "The e2e-runner image")
    stringParam('E2E_DIR', '/home/jenkins/workspace/$JOB_NAME/$BUILD_NUMBER', "Directory for storing workspace files")
    stringParam('E2E_DIR_LOGS', '${E2E_DIR}/logs', "Directory for storing logs. This directory is mounted into the e2e-runner container")
    stringParam('WORKFLOW_TAG', '', 'Workflow chart version (default: empty, will pull latest from chart repo)')
