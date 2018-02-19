@@ -106,7 +106,7 @@ job("${repoName}-release") {
 }
 
 downstreamJobs.each{ Map thisJob ->
-  def bucket = "gs://workflow-cli-release"
+  def bucket = "gs://hephy-cli-release"
 
   def headers  = "-h 'x-goog-meta-ci-job:\${JOB_NAME}' "
       headers += "-h 'x-goog-meta-ci-number:\${BUILD_NUMBER}' "
@@ -173,7 +173,7 @@ downstreamJobs.each{ Map thisJob ->
         set -eo pipefail
 
         git_commit="\$(git checkout "\${TAG}" && git rev-parse HEAD)"
-        revision_image=quay.io/kingdonb/workflow-cli-dev:"\${git_commit:0:7}"
+        revision_image=quay.io/deisci/workflow-cli-dev:"\${git_commit:0:7}"
 
         docker run \
           -e GCS_KEY_JSON=\""\${GCSKEY}"\" \
@@ -269,7 +269,7 @@ downstreamJobs.each{ Map thisJob ->
           cd ${workdir}
 
           git_commit="\$(git checkout "\${TAG}" && git rev-parse HEAD)"
-          revision_image=quay.io/kingdonb/workflow-cli-dev:"\${git_commit:0:7}"
+          revision_image=quay.io/deisci/workflow-cli-dev:"\${git_commit:0:7}"
 
           build-darwin-cli-binary ${thisJob.target}
 
