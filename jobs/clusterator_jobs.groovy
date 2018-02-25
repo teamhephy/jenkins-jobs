@@ -25,7 +25,7 @@ job("clusterator-create") {
     timestamps()
     colorizeOutput 'xterm'
     credentialsBinding {
-      string("GCLOUD_CREDENTIALS", "15122437-45b8-48ac-bb84-652394c8a927")
+      string("GCLOUD_CREDENTIALS", "7d1ea459-f250-4346-8174-3319b2ec4c20")
     }
   }
 
@@ -61,7 +61,7 @@ job("clusterator-delete") {
     timestamps()
     colorizeOutput 'xterm'
     credentialsBinding {
-      string("GCLOUD_CREDENTIALS", "15122437-45b8-48ac-bb84-652394c8a927")
+      string("GCLOUD_CREDENTIALS", "7d1ea459-f250-4346-8174-3319b2ec4c20")
     }
   }
 
