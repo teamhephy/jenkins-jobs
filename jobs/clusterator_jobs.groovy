@@ -40,7 +40,7 @@ job("clusterator-create") {
       -e NUM_NODES="\${NUM_NODES}" \
       -e MACHINE_TYPE="\${MACHINE_TYPE}" \
       -e VERSION="\${VERSION}" \
-      quay.io/kingdonb/clusterator:git-d863fa2 create
+      quay.io/kingdonb/clusterator:git-f307131 create
     """.stripIndent().trim()
   }
 }
@@ -70,7 +70,7 @@ job("clusterator-delete") {
       #!/usr/bin/env bash
 
       set -eo pipefail
-      docker run -e GCLOUD_CREDENTIALS="\${GCLOUD_CREDENTIALS}" quay.io/kingdonb/clusterator:git-d863fa2 delete
+      docker run -e GCLOUD_CREDENTIALS="\${GCLOUD_CREDENTIALS}" quay.io/kingdonb/clusterator:git-f307131 delete
     """.stripIndent().trim()
   }
 }
