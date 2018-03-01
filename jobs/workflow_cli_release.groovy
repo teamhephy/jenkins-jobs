@@ -76,7 +76,7 @@ job("${repoName}-release") {
     timestamps()
     colorizeOutput 'xterm'
     credentialsBinding {
-      string("SLACK_INCOMING_WEBHOOK_URL", defaults.slack.webhookURL)
+      string("SLACK_INCOMING_WEBHOOK_URL", "SLACK_INCOMING_WEBHOOK_URL")
     }
   }
 
@@ -161,8 +161,8 @@ downstreamJobs.each{ Map thisJob ->
       timestamps()
       colorizeOutput 'xterm'
       credentialsBinding {
-        string("GCSKEY", "6561701c-b7b4-4796-83c4-9d87946799e4")
-        string("SLACK_INCOMING_WEBHOOK_URL", defaults.slack.webhookURL)
+        string("GCSKEY", "GCSKEY")
+        string("SLACK_INCOMING_WEBHOOK_URL", "SLACK_INCOMING_WEBHOOK_URL")
       }
     }
 
@@ -253,9 +253,9 @@ downstreamJobs.each{ Map thisJob ->
       timestamps()
       colorizeOutput 'xterm'
       credentialsBinding {
-        string("GITHUB_ACCESS_TOKEN", defaults.github.accessTokenCredentialsID)
-        string("GCSKEY", "6561701c-b7b4-4796-83c4-9d87946799e4")
-        string("SLACK_INCOMING_WEBHOOK_URL", defaults.slack.webhookURL)
+        string("GITHUB_ACCESS_TOKEN", "GITHUB_ACCESS_TOKEN")
+        string("GCSKEY", "GCSKEY")
+        string("SLACK_INCOMING_WEBHOOK_URL", "SLACK_INCOMING_WEBHOOK_URL")
       }
     }
 
