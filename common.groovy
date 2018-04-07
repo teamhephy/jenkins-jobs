@@ -27,8 +27,8 @@ defaults = [
   ],
   github: [
     username: 'teamhephy-admin',
-    credentialsID: 'a2eef59f-cede-4190-a096-ea65722e2b83',
-    accessTokenCredentialsID: '393d5b89-9da5-410a-a476-94c9f4325217',
+    credentialsID: 'be091a9e-1bcb-4149-91a7-fc0c94d4d553',
+    accessTokenCredentialsID: 'f19ff3f0-f660-4fda-80ae-c31c246fda55',
   ],
   azure: [
     storageAccount: 'f2a28186-f3e1-4a51-9d15-e1646bdf34e6',
