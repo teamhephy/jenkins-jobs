@@ -4,7 +4,7 @@ evaluate(new File("${workspace}/common.groovy"))
 
 job('component-promote') {
   description """
-    Promotes a component image to the production 'kingdonb' registry org on e2e success after a merge to master
+    Promotes a component image to the production 'hephyci' registry org on e2e success after a merge to master
   """.stripIndent().trim()
 
 

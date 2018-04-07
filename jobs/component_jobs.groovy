@@ -148,7 +148,7 @@ repos.each { Map repo ->
 
               ## Build and Push Images
               # (Some repo 'test' targets depend on `make docker-build` be run before)
-              export IMAGE_PREFIX=kingdonb VERSION="git-\${git_commit:0:7}"
+              export IMAGE_PREFIX=hephyci VERSION="git-\${git_commit:0:7}"
 
               docker login -e="\$DOCKER_EMAIL" -u="\$DOCKER_USERNAME" -p="\$DOCKER_PASSWORD"
               # build once with "docker --pull --no-cache" to avoid stale layers
