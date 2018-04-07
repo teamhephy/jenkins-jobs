@@ -40,7 +40,7 @@ job("clusterator-create") {
       -e NUM_NODES="\${NUM_NODES}" \
       -e MACHINE_TYPE="\${MACHINE_TYPE}" \
       -e VERSION="\${VERSION}" \
-      quay.io/kingdonb/clusterator:git-4097125 create
+      quay.io/hephyci/clusterator:git-4097125 create
     """.stripIndent().trim()
   }
 }
