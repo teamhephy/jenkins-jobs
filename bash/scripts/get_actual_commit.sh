@@ -28,8 +28,8 @@ get-pr-commit() {
   # curl GH api to derive actual pr commit for reporting status and Docker image tagging
   resp=$(curl \
   -sSL \
-  --user deis-admin:"${GITHUB_ACCESS_TOKEN}" \
-  "https://api.github.com/repos/deis/${repo_name}/commits/${commit}")
+  --user hephyci-admin:"${GITHUB_ACCESS_TOKEN}" \
+  "https://api.github.com/repos/hephyci-admin/${repo_name}/commits/${commit}")
 
   commit_pattern='[a-f0-9]\{40\}'
   echo "${resp}" \
