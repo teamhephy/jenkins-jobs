@@ -20,7 +20,7 @@ defaults = [
   slack: [
     teamDomain: 'teamhephy',
     channel: '#testing',
-    webhookURL: 'a53b3a9e-d649-4cff-9997-6c24f07743c8',
+    webhookURL: '95f29b21-3cd5-44b3-9a7b-c0b8bbf77b5d',
   ],
   helm: [
     version: 'v2.6.1',

@@ -76,7 +76,7 @@ job("${repoName}-release") {
     timestamps()
     colorizeOutput 'xterm'
     credentialsBinding {
-      string("SLACK_INCOMING_WEBHOOK_URL", "SLACK_INCOMING_WEBHOOK_URL")
+      string("SLACK_INCOMING_WEBHOOK_URL", "95f29b21-3cd5-44b3-9a7b-c0b8bbf77b5d")
     }
   }
 
@@ -162,7 +162,7 @@ downstreamJobs.each{ Map thisJob ->
       colorizeOutput 'xterm'
       credentialsBinding {
         string("GCSKEY", "GCSKEY")
-        string("SLACK_INCOMING_WEBHOOK_URL", "SLACK_INCOMING_WEBHOOK_URL")
+        string("SLACK_INCOMING_WEBHOOK_URL", "95f29b21-3cd5-44b3-9a7b-c0b8bbf77b5d")
       }
     }
 
@@ -255,7 +255,7 @@ downstreamJobs.each{ Map thisJob ->
       credentialsBinding {
         string("GITHUB_ACCESS_TOKEN", "GITHUB_ACCESS_TOKEN")
         string("GCSKEY", "GCSKEY")
-        string("SLACK_INCOMING_WEBHOOK_URL", "SLACK_INCOMING_WEBHOOK_URL")
+        string("SLACK_INCOMING_WEBHOOK_URL", "95f29b21-3cd5-44b3-9a7b-c0b8bbf77b5d")
       }
     }
 
