@@ -90,10 +90,10 @@ repos.each { Map repo ->
         }
 
         parameters {
-          stringParam('DOCKER_USERNAME', 'hephybot', 'Docker Hub account name')
-          stringParam('DOCKER_EMAIL', 'dummy-address@teamhephy.com', 'Docker Hub email address')
-          stringParam('QUAY_USERNAME', 'hephyci+jenkins', 'Quay account name')
-          stringParam('QUAY_EMAIL', 'team+jenkins@teamhephy.com', 'Quay email address')
+          stringParam('DOCKER_USERNAME', 'hephyci', 'Docker Hub account name')
+          stringParam('DOCKER_EMAIL', 'kingdon@teamhephy.com', 'Docker Hub email address')
+          stringParam('QUAY_USERNAME', 'hephyci', 'Quay account name')
+          stringParam('QUAY_EMAIL', 'team@teamhephy.com', 'Quay email address')
           stringParam('sha1', 'master', 'Specific Git SHA to test')
         }
 
@@ -105,8 +105,8 @@ repos.each { Map repo ->
           timestamps()
           colorizeOutput 'xterm'
           credentialsBinding {
-            string("DOCKER_PASSWORD", "0d1f268f-407d-4cd9-a3c2-0f9671df0104")
-            string("QUAY_PASSWORD", "c67dc0a1-c8c4-4568-a73d-53ad8530ceeb")
+            string("DOCKER_PASSWORD", "171dca49-defe-44a9-8d31-b66f69509133")
+            string("QUAY_PASSWORD", "40ea7a06-8e1d-4d09-81be-45f0ce07ce27")
             string("GITHUB_ACCESS_TOKEN", defaults.github.accessTokenCredentialsID)
             string("SLACK_INCOMING_WEBHOOK_URL", defaults.slack.webhookURL)
             if (repo.tokens?.codecov) {
