@@ -322,7 +322,7 @@ job("${chart}-chart-stage") {
       string("AZURE_STORAGE_ACCOUNT", defaults.azure.storageAccount)
       string("AZURE_STORAGE_KEY", defaults.azure.storageAccountKeyID)
       string("SLACK_INCOMING_WEBHOOK_URL", defaults.slack.webhookURL)
-      string("SIGNING_KEY_PASSPHRASE", '3963b12b-bad3-429b-b1e5-e047a159bf02')
+      string("SIGNING_KEY_PASSPHRASE", '34783e47-b172-4227-877f-acbffb335ab7')
     }
   }
 
