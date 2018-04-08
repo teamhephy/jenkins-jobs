@@ -31,8 +31,8 @@ defaults = [
     accessTokenCredentialsID: 'f19ff3f0-f660-4fda-80ae-c31c246fda55',
   ],
   azure: [
-    storageAccount: 'f2a28186-f3e1-4a51-9d15-e1646bdf34e6',
-    storageAccountKeyID: 'c9cad0b0-53dd-4d38-a832-c4b29aeaf49b',
+    storageAccount: '7f71d198-f5d7-4ded-9b2b-58280ce69ef2',
+    storageAccountKeyID: '7ba177e3-b6de-4dbc-99f2-4bacf1a31cc0',
   ],
   statusesToNotify: ['SUCCESS', 'FAILURE'],
   "e2eRunner": [ provider: 'google', ],
