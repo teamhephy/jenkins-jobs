@@ -11,7 +11,7 @@ get-latest-component-release() {
     component_to_curl="grafana"
   fi
 
-  wfm_api_url="https://versions.teamhephy.info/v3/versions/stable/hephy-${component_to_curl}/latest"
+  wfm_api_url="http://versions.teamhephy.info/v3/versions/stable/hephy-${component_to_curl}/latest"
   echo "Getting latest ${component} release via url: ${wfm_api_url}" >&2
 
   latest_release="$(curl -sf "${wfm_api_url}" | jq '.version.version' | tr -d '"')"
