@@ -23,7 +23,7 @@ defaults = [
     webhookURL: '95f29b21-3cd5-44b3-9a7b-c0b8bbf77b5d',
   ],
   helm: [
-    version: 'v2.6.1',
+    version: 'v2.8.2',
   ],
   github: [
     username: 'teamhephy-admin',
