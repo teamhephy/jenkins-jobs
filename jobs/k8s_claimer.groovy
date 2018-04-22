@@ -159,8 +159,8 @@ job('k8s-claimer-build-cli') {
     timestamps()
     colorizeOutput 'xterm'
     credentialsBinding {
-      string("AZURE_STORAGE_ACCOUNT", "bd50d9e8-feed-4f37-9833-10728d0d1840")
-      string("AZURE_STORAGE_KEY", "0211420f-1544-4543-b7bf-0c21dddf5db1")
+      string("AZURE_STORAGE_ACCOUNT", defaults.azure.storageAccount)
+      string("AZURE_STORAGE_KEY", defaults.azure.storageAccountKeyID)
       string("GITHUB_ACCESS_TOKEN", defaults.github.accessTokenCredentialsID)
       string("SLACK_INCOMING_WEBHOOK_URL", defaults.slack.webhookURL)
     }
