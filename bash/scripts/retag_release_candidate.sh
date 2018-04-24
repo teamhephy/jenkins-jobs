@@ -9,7 +9,7 @@ main() {
 retag-release-candidate() {
   local candidate="${1}"
   local commit="${2}"
-  local image_name="deis/${candidate}"
+  local image_name="hephy/${candidate}"
 
   # release to dockerhub
   local candidate_image="${image_name}":git-"${commit:0:7}"

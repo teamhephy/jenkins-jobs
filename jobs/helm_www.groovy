@@ -105,12 +105,12 @@ job("helm-www-pr") {
   }
 
   triggers {
-    pullRequest {
-      admin('deis-admin')
+    githubPullRequest {
+      admin('teamhephy-admin')
       cron('H/5 * * * *')
       useGitHubHooks()
       triggerPhrase('OK to test')
-      orgWhitelist(['deis'])
+      orgWhitelist(['teamhephy'])
       allowMembersOfWhitelistedOrgsAsAdmin()
       // this plugin will update PR status no matter what,
       // so until we fix this, here are our default messages:

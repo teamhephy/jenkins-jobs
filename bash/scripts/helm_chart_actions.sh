@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-export DEIS_CHARTS_BASE_URL="https://charts.deis.com"
+export DEIS_CHARTS_BASE_URL="http://charts.teamhephy.info"
 
 # sign-and-package-helm-chart signs and packages the helm chart provided by chart,
 # expecting a signing key passphrase in SIGNING_KEY_PASSPHRASE.
@@ -19,7 +19,7 @@ sign-and-package-helm-chart() {
     return 1
   fi
 
-  signing_key="${SIGNING_KEY:-Deis, Inc. (Helm chart signing key)}"
+  signing_key="${SIGNING_KEY:-Team Hephy (Helm chart signing key)}"
   keyring="${KEYRING:-${JENKINS_HOME}/.gnupg/secring.gpg}"
 
   echo "Signing packaged chart '${chart}' with key '${signing_key}' from keyring '${keyring}'..." >&2
@@ -134,8 +134,8 @@ update-chart() {
     ## make component chart updates
     if [ "${chart_repo}" == "${chart}" ]; then
       ## chart repo is production repo; update values appropriately
-      # update all org values to "deis"
-      perl -i -0pe 's/"deisci"/"deis"/g' "${chart}"/values.yaml
+      # update all org values to "teamhephy"
+      perl -i -0pe 's/"hephyci"/"teamhephy"/g' "${chart}"/values.yaml
       # update the image pull policy to "IfNotPresent"
       perl -i -0pe 's/"Always"/"IfNotPresent"/g' "${chart}"/values.yaml
       # update the dockerTag value to chart_version
@@ -207,8 +207,8 @@ update-chart() {
     # if chart repo name does not match chart (i.e. workflow(-dev/-pr/-staging) != workflow), consider it non-production
     if [ "${chart_repo}" != "${chart}" ]; then
       # modify workflow-manager/doctor urls in values.yaml to point to staging
-      perl -i -0pe "s/versions.deis/versions-staging.deis/g" "${chart}"/values.yaml
-      perl -i -0pe "s/doctor.deis/doctor-staging.deis/g" "${chart}"/values.yaml
+      perl -i -0pe "s/versions.teamhephy/versions-staging.teamhephy/g" "${chart}"/values.yaml
+      perl -i -0pe "s/doctor.teamhephy/doctor-staging.teamhephy/g" "${chart}"/values.yaml
     fi
 
     # set WORKFLOW_TAG for downstream e2e job to read from

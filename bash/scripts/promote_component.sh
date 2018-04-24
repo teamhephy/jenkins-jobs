@@ -18,8 +18,8 @@ promote-component() {
   local image_name_and_tag="${component}:git-${commit:0:7}"
 
   # promote to dockerhub
-  local original_image=deisci/"${image_name_and_tag}"
-  local promoted_image=deis/"${image_name_and_tag}"
+  local original_image=hephyci/"${image_name_and_tag}"
+  local promoted_image=hephy/"${image_name_and_tag}"
 
   echo "Promoting ${original_image} to ${promoted_image}"
 

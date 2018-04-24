@@ -7,7 +7,7 @@ name = 'jenkins-jobs-pr'
 job(name) {
   description """
     <ol>
-      <li>Watches the <a href="https://github.com/deisthree/jenkins-jobs">jenkins-jobs</a> repo for a PR commit</li>
+      <li>Watches the <a href="https://github.com/teamhephy/jenkins-jobs">jenkins-jobs</a> repo for a PR commit</li>
       <li>and runs tests against changes</li>
     </ol>
   """.stripIndent().trim()
@@ -15,7 +15,7 @@ job(name) {
   scm {
     git {
       remote {
-        github("deis/jenkins-jobs")
+        github("teamhephy/jenkins-jobs")
         credentials(defaults.github.credentialsID)
         refspec('+refs/pull/*:refs/remotes/origin/pr/*')
       }
@@ -40,12 +40,12 @@ job(name) {
   triggers {
     githubPush()
 
-    pullRequest {
-      admin('deis-admin')
+    githubPullRequest {
+      admin('teamhephy-admin')
       cron('H/5 * * * *')
       useGitHubHooks()
       triggerPhrase('OK to test')
-      orgWhitelist(['deis'])
+      orgWhitelist(['teamhephy'])
       allowMembersOfWhitelistedOrgsAsAdmin()
       extensions {
         commitStatus {

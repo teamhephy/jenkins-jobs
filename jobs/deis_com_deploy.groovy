@@ -2,20 +2,20 @@ def workspace = new File(".").getAbsolutePath()
 if (!new File("${workspace}/common.groovy").canRead()) { workspace = "${WORKSPACE}"}
 evaluate(new File("${workspace}/common.groovy"))
 
-name = 'deis-com-deploy'
+name = 'teamhephy-com-deploy'
 slackChannel = '#marketing'
 
 job(name) {
   description """
     <ol>
-      <li>Compiles and deploys <a href="https://deis.com">deis.com</a></li>
+      <li>Compiles and deploys <a href="https://teamhephy.com">teamhephy.com</a></li>
     </ol>
   """.stripIndent().trim()
 
   multiscm {
    git {
      remote {
-         github('deis/gutenberg')
+         github('teamhephy/gutenberg')
          credentials(defaults.github.credentialsID)
      }
      extensions {
@@ -25,7 +25,7 @@ job(name) {
    }
    git {
      remote {
-         github('deis/workflow')
+         github('teamhephy/workflow')
          credentials(defaults.github.credentialsID)
      }
      extensions {
@@ -36,11 +36,11 @@ job(name) {
    }
    git {
      remote {
-         github('deis/deis.com')
+         github('teamhephy/teamhephy.com')
          credentials(defaults.github.credentialsID)
      }
      extensions {
-         relativeTargetDirectory('deis.com')
+         relativeTargetDirectory('teamhephy.com')
      }
      branch('master')
    }
@@ -85,9 +85,9 @@ job(name) {
     }
     parameters {
       stringParam('WORKFLOW_DOCS_SOURCE', '${WORKSPACE}/workflow', 'Relative Workflow source')
-      stringParam('DEIS_COM_SOURCE', '${WORKSPACE}/deis.com', 'Relative Deis.com source')
-      stringParam('QUAY_USERNAME', 'deis+jenkins', 'Quay account name')
-      stringParam('QUAY_EMAIL', 'deis+jenkins@deis.com', 'Quay email address')
+      stringParam('DEIS_COM_SOURCE', '${WORKSPACE}/teamhephy.com', 'Relative Teamhephy.com source')
+      stringParam('QUAY_USERNAME', 'teamhephy+jenkins', 'Quay account name')
+      stringParam('QUAY_EMAIL', 'team+jenkins@teamhephy.com', 'Quay email address')
     }
   }
 
@@ -104,7 +104,7 @@ job(name) {
       docker login -e="\$QUAY_EMAIL" -u="\$QUAY_USERNAME" -p="\$QUAY_PASSWORD" quay.io
       make prep build build-image push
 
-      curl -sSL http://deis.io/deis-cli/install-v2.sh | bash
+      curl -sSL http://teamhephy.info/hephy-cli/install-v2.sh | bash
       export PATH="\$(pwd):\$PATH"
 
       make deploy

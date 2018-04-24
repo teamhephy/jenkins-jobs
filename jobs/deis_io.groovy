@@ -2,14 +2,14 @@ def workspace = new File(".").getAbsolutePath()
 if (!new File("${workspace}/common.groovy").canRead()) { workspace = "${WORKSPACE}"}
 evaluate(new File("${workspace}/common.groovy"))
 
-repo_name = 'deis.io'
-downstreamJobName = 'deis-io-deploy'
-slackChannel = '#marketing'
+repo_name = 'teamhephy.info'
+downstreamJobName = 'teamhephy-info-deploy'
+slackChannel = '#ci'
 
-job("deis-io-merge") {
+job("teamhephy-info-merge") {
   description """
     <ol>
-      <li>Watches the <a href="https://github.com/deisthree/${repo_name}">${repo_name}</a> repo for a commit to gh-pages</li>
+      <li>Watches the <a href="https://github.com/teamhephy/${repo_name}">${repo_name}</a> repo for a commit to gh-pages</li>
       <li>Kicks off downstream ${downstreamJobName} job to deploy</li>
     </ol>
   """.stripIndent().trim()
@@ -17,7 +17,7 @@ job("deis-io-merge") {
   scm {
     git {
       remote {
-        github("deis/${repo_name}")
+        github("teamhephy/${repo_name}")
         credentials(defaults.github.credentialsID)
       }
       branch('gh-pages')
@@ -80,7 +80,7 @@ job("deis-io-merge") {
   }
 }
 
-job("deis-io-pr") {
+job("teamhephy-info-pr") {
   description """
     <ol>
       <li>Watches the ${repo_name} repo_name for pull requests</li>
@@ -90,7 +90,7 @@ job("deis-io-pr") {
   scm {
     git {
       remote {
-        github("deis/${repo_name}")
+        github("teamhephy/${repo_name}")
         credentials(defaults.github.credentialsID)
         refspec('+refs/pull/*:refs/remotes/origin/pr/*')
       }
@@ -109,12 +109,12 @@ job("deis-io-pr") {
   }
 
   triggers {
-    pullRequest {
-      admin('deis-admin')
+    githubPullRequest {
+      admin('teamhephy-admin')
       cron('H/5 * * * *')
       useGitHubHooks()
       triggerPhrase('OK to test')
-      orgWhitelist(['deis'])
+      orgWhitelist(['teamhephy'])
       allowMembersOfWhitelistedOrgsAsAdmin()
       // this plugin will update PR status no matter what,
       // so until we fix this, here are our default messages:
@@ -132,7 +132,7 @@ job("deis-io-pr") {
   }
 
   parameters {
-    stringParam('DEIS_IO_BRANCH', 'gh-pages', 'deis.io branch to build')
+    stringParam('DEIS_IO_BRANCH', 'gh-pages', 'teamhephy.info branch to build')
     stringParam('CONTAINER_ENV', '${DEIS_IO_STAGING_ENV}', 'Environment file with AWS API Keys, S3 Buckets and CloudFront values')
     stringParam('sha1', '${DEIS_IO_BRANCH}', 'Specific Git SHA to test')
   }

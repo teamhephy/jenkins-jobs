@@ -3,7 +3,7 @@ if (!new File("${workspace}/common.groovy").canRead()) { workspace = "${WORKSPAC
 evaluate(new File("${workspace}/repo.groovy"))
 
 defaults = [
-  signingNode: ['deis-signatory'],
+  signingNode: ['hephy-signatory'],
   tmpPath: '/tmp/${JOB_NAME}/${BUILD_NUMBER}',
   envFile: '/tmp/${JOB_NAME}/${BUILD_NUMBER}/env.properties',
   daysToKeep: 14,
@@ -18,21 +18,21 @@ defaults = [
     release: 'stable',
   ],
   slack: [
-    teamDomain: 'deis',
+    teamDomain: 'teamhephy',
     channel: '#testing',
-    webhookURL: 'a53b3a9e-d649-4cff-9997-6c24f07743c8',
+    webhookURL: '95f29b21-3cd5-44b3-9a7b-c0b8bbf77b5d',
   ],
   helm: [
-    version: 'v2.6.1',
+    version: 'v2.8.2',
   ],
   github: [
-    username: 'deis-admin',
-    credentialsID: 'a2eef59f-cede-4190-a096-ea65722e2b83',
-    accessTokenCredentialsID: '393d5b89-9da5-410a-a476-94c9f4325217',
+    username: 'teamhephy-admin',
+    credentialsID: 'be091a9e-1bcb-4149-91a7-fc0c94d4d553',
+    accessTokenCredentialsID: 'f19ff3f0-f660-4fda-80ae-c31c246fda55',
   ],
   azure: [
-    storageAccount: 'f2a28186-f3e1-4a51-9d15-e1646bdf34e6',
-    storageAccountKeyID: 'c9cad0b0-53dd-4d38-a832-c4b29aeaf49b',
+    storageAccount: '7f71d198-f5d7-4ded-9b2b-58280ce69ef2',
+    storageAccountKeyID: '7ba177e3-b6de-4dbc-99f2-4bacf1a31cc0',
   ],
   statusesToNotify: ['SUCCESS', 'FAILURE'],
   "e2eRunner": [ provider: 'google', ],

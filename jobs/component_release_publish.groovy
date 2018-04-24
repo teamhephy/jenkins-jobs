@@ -10,7 +10,7 @@ job('component-release-publish') {
   scm {
     git {
       remote {
-        github("deis/workflow-manager-api-publish")
+        github("teamhephy/workflow-manager-api-publish")
         credentials(defaults.github.credentialsID)
       }
       branch('master')
