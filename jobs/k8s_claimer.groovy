@@ -267,7 +267,7 @@ job('k8s-claimer-deploy') {
       export DEV_REGISTRY=quay.io/
       docker login -e="\$QUAY_EMAIL" -u="\$QUAY_USERNAME" -p="\$QUAY_PASSWORD" quay.io
 
-      DOCKER_BUILD_FLAGS="--pull --no-cache" KUBECONFIG=kubeconfig ARGS=config.ssh_key=\${K8S_CLAIMER_SSH_KEY},config.google.account_file=\${GOOGLE_CLOUD_ACCOUNT_FILE},config.google.project_id=teamhephy-e2e-leasable,config.auth_token=\${AUTH_TOKEN},config.namespace=k8sclaimer,config.azure.subscription_id=\${AZURE_SUBSCRIPTION_ID},config.azure.client_id=\${AZURE_CLIENT_ID},config.azure.client_secret=\${AZURE_CLIENT_SECRET},config.azure.tenant_id=\${AZURE_TENANT_ID} make bootstrap build push upgrade
+      DOCKER_BUILD_FLAGS="--pull --no-cache" KUBECONFIG=kubeconfig ARGS=config.ssh_key=\${K8S_CLAIMER_SSH_KEY},config.google.account_file=\${GOOGLE_CLOUD_ACCOUNT_FILE},config.google.project_id=hephy-e2e-leasable,config.auth_token=\${AUTH_TOKEN},config.namespace=k8sclaimer,config.azure.subscription_id=\${AZURE_SUBSCRIPTION_ID},config.azure.client_id=\${AZURE_CLIENT_ID},config.azure.client_secret=\${AZURE_CLIENT_SECRET},config.azure.tenant_id=\${AZURE_TENANT_ID} make bootstrap build push upgrade
       """.stripIndent().trim()
   }
 }

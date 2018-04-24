@@ -6,7 +6,7 @@ def repoName = 'workflow-cli'
 def repo = repos.find{ it.name == repoName }
 
 def gitInfo = [
-  repo: "hephyci/${repoName}",
+  repo: "hephy/${repoName}",
   creds: defaults.github.credentialsID,
   refspec: '+refs/tags/*:refs/remotes/origin/tags/*',
   branch: '*/tags/*',

@@ -44,8 +44,8 @@ get-pr-commits() {
 
   resp=$(curl \
   -sSL \
-  --user hephyci-admin:"${GITHUB_ACCESS_TOKEN}" \
-  "https://api.github.com/repos/hephyci-admin/${repo_name}/pulls/${pr_number}/commits")
+  --user teamhephy-admin:"${GITHUB_ACCESS_TOKEN}" \
+  "https://api.github.com/repos/teamhephy/${repo_name}/pulls/${pr_number}/commits")
 
   echo "${resp}" >&2
   echo "${resp}" | jq '.[].sha'

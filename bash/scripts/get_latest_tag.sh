@@ -15,7 +15,7 @@ get-latest-tag() {
   fi
 
   # grab latest tag from GH
-  latest_tag="$(curl -sSf "https://api.github.com/repos/hephyci-admin/${component}/releases/latest" | jq '.tag_name' | tr -d '"')"
+  latest_tag="$(curl -sSf "https://api.github.com/repos/teamhephy/${component}/releases/latest" | jq '.tag_name' | tr -d '"')"
 
   # If tag not latest, bail out
   if [ "${tag}" != "${latest_tag}" ]; then

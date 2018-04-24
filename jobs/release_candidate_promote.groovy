@@ -4,7 +4,7 @@ evaluate(new File("${workspace}/common.groovy"))
 
 job('release-candidate-promote') {
   description """
-    Promotes a release candidate image by retagging with the official semver tag to the production 'hephyci' registry org on an upstream e2e success
+    Promotes a release candidate image by retagging with the official semver tag to the production 'hephy' registry org on an upstream e2e success
   """.stripIndent().trim()
 
 

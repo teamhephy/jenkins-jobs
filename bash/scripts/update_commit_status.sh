@@ -20,7 +20,7 @@ update-commit-status() {
 
   curl \
     -sSL \
-    --user hephyci-admin:"${GITHUB_ACCESS_TOKEN}" \
+    --user teamhephy-admin:"${GITHUB_ACCESS_TOKEN}" \
     --data "${data}" \
-    "https://api.github.com/repos/hephyci-admin/${repo_name}/statuses/${git_commit}"
+    "https://api.github.com/repos/teamhephy/${repo_name}/statuses/${git_commit}"
 }

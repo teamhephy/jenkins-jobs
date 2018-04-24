@@ -12,7 +12,7 @@ For more information about the Hephy Workflow, please visit the main project pag
 
 # About
 
-This repository serves as a central location for [Hephy Workflow Jenkins jobs](https://example.com/coming-soon) represented in [Jenkins Job DSL](https://github.com/jenkinsci/job-dsl-plugin).
+This repository serves as a central location for [Hephy Workflow Jenkins jobs](https://ci.teamhephy.info) represented in [Jenkins Job DSL](https://github.com/jenkinsci/job-dsl-plugin).
 
 ## Resources
 
