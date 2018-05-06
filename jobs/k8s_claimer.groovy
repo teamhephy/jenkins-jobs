@@ -251,7 +251,7 @@ job('k8s-claimer-deploy') {
       string("AZURE_TENANT_ID", "528070f3-4799-4c1a-94d6-20a16177487a")
       string("GITHUB_ACCESS_TOKEN", defaults.github.accessTokenCredentialsID)
       string("SLACK_INCOMING_WEBHOOK_URL", defaults.slack.webhookURL)
-      string("QUAY_PASSWORD", "8317a529-10f7-40b5-abd4-a42f242f22f0")
+      string("QUAY_PASSWORD", "40ea7a06-8e1d-4d09-81be-45f0ce07ce27")
     }
   }
 
