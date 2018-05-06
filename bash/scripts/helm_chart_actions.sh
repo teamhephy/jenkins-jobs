@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-export DEIS_CHARTS_BASE_URL="http://charts.teamhephy.info"
+export DEIS_CHARTS_BASE_URL="https://charts.teamhephy.info"
 
 # sign-and-package-helm-chart signs and packages the helm chart provided by chart,
 # expecting a signing key passphrase in SIGNING_KEY_PASSPHRASE.
