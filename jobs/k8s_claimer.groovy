@@ -244,7 +244,7 @@ job('k8s-claimer-deploy') {
       string("KUBECONFIG_BASE64", "f9d0660d-29d5-4ac5-82cc-b96a1a833344")
       string("K8S_CLAIMER_SSH_KEY", "691ba06a-6c7c-4e94-8fad-7304a2ff0aad")
       string("GOOGLE_CLOUD_ACCOUNT_FILE", "ba7ab317-a820-4e70-9399-a54cf3a59949")
-      string("AUTH_TOKEN", "a62d7fe9-5b74-47e3-9aa5-2458ba32da52")
+      string("AUTH_TOKEN", "8fbcb93a-0c6e-4594-96c9-e63d08bab61c")
       string("AZURE_SUBSCRIPTION_ID", "1b2376bb-38ed-480b-8bcc-81250ebaa327")
       string("AZURE_CLIENT_ID", "862dbc6f-2fbe-4342-a797-c6433efb6761")
       string("AZURE_CLIENT_SECRET", "3d5c3d60-8648-42f4-8401-7d96e08ca080")

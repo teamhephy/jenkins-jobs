@@ -108,7 +108,7 @@ job(name) {
       string("AWS_SECRET_ACCESS_KEY","033f76e3-21b8-4bae-a7b3-7f43e07138d3")
       string("AWS_ACCESS_KEY_ID","02a5c84e-3248-4776-acc5-6b6a1fb24dfc")
       // k8s-claimer auth
-      string("AUTH_TOKEN", "a62d7fe9-5b74-47e3-9aa5-2458ba32da52")
+      string("AUTH_TOKEN", "8fbcb93a-0c6e-4594-96c9-e63d08bab61c")
     }
   }
 

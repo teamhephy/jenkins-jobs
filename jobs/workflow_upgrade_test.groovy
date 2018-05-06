@@ -83,7 +83,7 @@ job("${chart}-upgrade-test") {
       // For slack notification
       string("SLACK_INCOMING_WEBHOOK_URL", defaults.slack.webhookURL)
       // k8s-claimer auth
-      string("AUTH_TOKEN", "a62d7fe9-5b74-47e3-9aa5-2458ba32da52")
+      string("AUTH_TOKEN", "8fbcb93a-0c6e-4594-96c9-e63d08bab61c")
 
       // Off-cluster storage support
       // gcloud/gsutil

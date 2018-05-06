@@ -38,7 +38,7 @@ job(name) {
     timestamps()
     colorizeOutput 'xterm'
     credentialsBinding {
-      string("AUTH_TOKEN", "a62d7fe9-5b74-47e3-9aa5-2458ba32da52")
+      string("AUTH_TOKEN", "8fbcb93a-0c6e-4594-96c9-e63d08bab61c")
     }
   }
 
