@@ -86,8 +86,8 @@ job(name) {
     parameters {
       stringParam('WORKFLOW_DOCS_SOURCE', '${WORKSPACE}/workflow', 'Relative Workflow source')
       stringParam('DEIS_COM_SOURCE', '${WORKSPACE}/teamhephy.com', 'Relative Teamhephy.com source')
-      stringParam('QUAY_USERNAME', 'teamhephy+jenkins', 'Quay account name')
-      stringParam('QUAY_EMAIL', 'team+jenkins@teamhephy.com', 'Quay email address')
+      stringParam('QUAY_USERNAME', 'hephy+jenkins', 'Quay account name')
+      stringParam('QUAY_EMAIL', 'kingdon@teamhephy.com', 'Quay email address')
     }
   }
 

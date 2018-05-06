@@ -233,8 +233,8 @@ job('k8s-claimer-deploy') {
   }
 
   parameters {
-    stringParam('QUAY_USERNAME', 'teamhephy+jenkins', 'Quay account name')
-    stringParam('QUAY_EMAIL', 'team+jenkins@teamhephy.com', 'Quay email address')
+    stringParam('QUAY_USERNAME', 'hephy+jenkins', 'Quay account name')
+    stringParam('QUAY_EMAIL', 'kingdon@teamhephy.com', 'Quay email address')
   }
 
   wrappers {

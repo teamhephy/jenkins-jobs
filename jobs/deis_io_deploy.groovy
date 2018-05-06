@@ -59,8 +59,8 @@ job(name) {
       string("DEIS_PASSWORD", "201494de-a097-4a60-aaa3-6d16a930dabd")
     }
     parameters {
-      stringParam('QUAY_USERNAME', 'teamhephy+jenkins', 'Quay account name')
-      stringParam('QUAY_EMAIL', 'team+jenkins@teamhephy.com', 'Quay email address')
+      stringParam('QUAY_USERNAME', 'hephy+jenkins', 'Quay account name')
+      stringParam('QUAY_EMAIL', 'kingdon@teamhephy.com', 'Quay email address')
       stringParam('DEIS_IO_ORG', 'teamhephy', 'GitHub organization to use.')
       stringParam('DEIS_IO_BRANCH', 'gh-pages', 'teamhephy.info branch to deploy')
     }
