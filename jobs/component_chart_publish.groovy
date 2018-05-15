@@ -13,7 +13,7 @@ repos.each { Map repo ->
       scm {
         git {
           remote {
-            github("deis/${repo.name}")
+            github("teamhephy/${repo.name}")
             credentials(defaults.github.credentialsID)
           }
           branch('master')
@@ -85,7 +85,7 @@ repos.each { Map repo ->
           string("AZURE_STORAGE_KEY", defaults.azure.storageAccountKeyID)
           string("GITHUB_ACCESS_TOKEN", defaults.github.accessTokenCredentialsID)
           string("SLACK_INCOMING_WEBHOOK_URL", defaults.slack.webhookURL)
-          string("SIGNING_KEY_PASSPHRASE", '3963b12b-bad3-429b-b1e5-e047a159bf02')
+          string("SIGNING_KEY_PASSPHRASE", '34783e47-b172-4227-877f-acbffb335ab7')
         }
       }
 
@@ -98,7 +98,7 @@ repos.each { Map repo ->
             # checkout PR commit if repo_type 'pr' and value of commit env var non-null
             if [ "\${CHART_REPO_TYPE}" == 'pr' ] && [ -n "\${${repo.commitEnvVar}}" ]; then
               echo "Fetching PR changes from repo '${repo.name}' at commit \${${repo.commitEnvVar}}" 1>&2
-              git fetch -q --tags --progress https://github.com/deisthree/${repo.name}.git +refs/pull/*:refs/remotes/origin/pr/*
+              git fetch -q --tags --progress https://github.com/teamhephy/${repo.name}.git +refs/pull/*:refs/remotes/origin/pr/*
               git checkout "\${${repo.commitEnvVar}}"
             fi
 

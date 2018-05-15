@@ -12,7 +12,7 @@ job("${chart}-chart-publish") {
   scm {
     git {
       remote {
-        github("deis/${repo.name}")
+        github("teamhephy/${repo.name}")
         credentials(defaults.github.credentialsID)
       }
       branch('master')
@@ -106,7 +106,7 @@ job("${chart}-chart-publish") {
         # checkout PR commit if repo_type 'pr' and value of commit env var non-null
         if [ "\${CHART_REPO_TYPE}" == 'pr' ] && [ -n "\${${repo.commitEnvVar}}" ]; then
           echo "Fetching PR changes from repo '${repo.name}' at commit \${${repo.commitEnvVar}}" 1>&2
-          git fetch -q --tags --progress https://github.com/deisthree/${repo.name}.git +refs/pull/*:refs/remotes/origin/pr/*
+          git fetch -q --tags --progress https://github.com/teamhephy/${repo.name}.git +refs/pull/*:refs/remotes/origin/pr/*
           git checkout "\${${repo.commitEnvVar}}"
         fi
 
@@ -210,7 +210,7 @@ job("${chart}-chart-e2e") {
     choiceParam('CHART_REPO_TYPE', ['dev', 'pr', 'staging', 'production'], 'Type of chart repo for publishing (default: dev)')
     stringParam('HELM_VERSION', defaults.helm.version, 'Version of Helm to download/use')
     stringParam('GINKGO_NODES', '15', "Number of parallel executors to use when running e2e tests")
-    stringParam('E2E_RUNNER_IMAGE', 'quay.io/deisci/e2e-runner:canary', "The e2e-runner image")
+    stringParam('E2E_RUNNER_IMAGE', 'quay.io/hephyci/e2e-runner:canary', "The e2e-runner image")
     stringParam('E2E_DIR', '/home/jenkins/workspace/$JOB_NAME/$BUILD_NUMBER', "Directory for storing workspace files")
     stringParam('E2E_DIR_LOGS', '${E2E_DIR}/logs', "Directory for storing logs. This directory is mounted into the e2e-runner container")
     stringParam('CLUSTER_REGEX', '', 'K8s cluster regex (name) to supply when requesting cluster')
@@ -235,7 +235,7 @@ job("${chart}-chart-e2e") {
     timestamps()
     colorizeOutput 'xterm'
     credentialsBinding {
-      string("AUTH_TOKEN", "a62d7fe9-5b74-47e3-9aa5-2458ba32da52")
+      string("AUTH_TOKEN", "8fbcb93a-0c6e-4594-96c9-e63d08bab61c")
       string("GITHUB_ACCESS_TOKEN", defaults.github.accessTokenCredentialsID)
       string("SLACK_INCOMING_WEBHOOK_URL", defaults.slack.webhookURL)
     }
@@ -267,7 +267,7 @@ job("${chart}-chart-stage") {
   scm {
     git {
       remote {
-        github("deis/${repo.name}")
+        github("teamhephy/${repo.name}")
         credentials(defaults.github.credentialsID)
       }
       branch('master')
@@ -322,7 +322,7 @@ job("${chart}-chart-stage") {
       string("AZURE_STORAGE_ACCOUNT", defaults.azure.storageAccount)
       string("AZURE_STORAGE_KEY", defaults.azure.storageAccountKeyID)
       string("SLACK_INCOMING_WEBHOOK_URL", defaults.slack.webhookURL)
-      string("SIGNING_KEY_PASSPHRASE", '3963b12b-bad3-429b-b1e5-e047a159bf02')
+      string("SIGNING_KEY_PASSPHRASE", '34783e47-b172-4227-877f-acbffb335ab7')
     }
   }
 
@@ -417,7 +417,7 @@ job("${chart}-chart-release") {
         az storage blob download -c ${chartRepo.production} -n index.yaml -f index.yaml
 
         # update index file
-        helm repo index . --url https://charts.deis.com/${chartRepo.production} --merge ./index.yaml
+        helm repo index . --url https://charts.teamhephy.com/${chartRepo.production} --merge ./index.yaml
 
         echo "Uploading updated index.yaml file to chart repo ${chartRepo.production}..."
         az storage blob upload -c ${chartRepo.production} -n index.yaml -f index.yaml

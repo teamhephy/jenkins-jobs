@@ -6,7 +6,7 @@ def repoName = 'workflow-cli'
 def repo = repos.find{ it.name == repoName }
 
 def gitInfo = [
-  repo: "deis/${repoName}",
+  repo: "hephy/${repoName}",
   creds: defaults.github.credentialsID,
   refspec: '+refs/tags/*:refs/remotes/origin/tags/*',
   branch: '*/tags/*',
@@ -76,7 +76,7 @@ job("${repoName}-release") {
     timestamps()
     colorizeOutput 'xterm'
     credentialsBinding {
-      string("SLACK_INCOMING_WEBHOOK_URL", defaults.slack.webhookURL)
+      string("SLACK_INCOMING_WEBHOOK_URL", "95f29b21-3cd5-44b3-9a7b-c0b8bbf77b5d")
     }
   }
 
@@ -106,7 +106,7 @@ job("${repoName}-release") {
 }
 
 downstreamJobs.each{ Map thisJob ->
-  def bucket = "gs://workflow-cli-release"
+  def bucket = "gs://hephy-cli-release"
 
   def headers  = "-h 'x-goog-meta-ci-job:\${JOB_NAME}' "
       headers += "-h 'x-goog-meta-ci-number:\${BUILD_NUMBER}' "
@@ -161,8 +161,8 @@ downstreamJobs.each{ Map thisJob ->
       timestamps()
       colorizeOutput 'xterm'
       credentialsBinding {
-        string("GCSKEY", "6561701c-b7b4-4796-83c4-9d87946799e4")
-        string("SLACK_INCOMING_WEBHOOK_URL", defaults.slack.webhookURL)
+        string("GCSKEY", "GCSKEY")
+        string("SLACK_INCOMING_WEBHOOK_URL", "95f29b21-3cd5-44b3-9a7b-c0b8bbf77b5d")
       }
     }
 
@@ -173,7 +173,7 @@ downstreamJobs.each{ Map thisJob ->
         set -eo pipefail
 
         git_commit="\$(git checkout "\${TAG}" && git rev-parse HEAD)"
-        revision_image=quay.io/deisci/workflow-cli-dev:"\${git_commit:0:7}"
+        revision_image=quay.io/hephyci/workflow-cli-dev:"\${git_commit:0:7}"
 
         docker run \
           -e GCS_KEY_JSON=\""\${GCSKEY}"\" \
@@ -200,7 +200,7 @@ downstreamJobs.each{ Map thisJob ->
 
   // darwin-amd64 variants
   job("${thisJob.name}-darwin-amd64") {
-    def workdir = "golang/src/github.com/deis/workflow-cli"
+    def workdir = "golang/src/github.com/teamhephy/workflow-cli"
 
     scm {
       git {
@@ -253,9 +253,9 @@ downstreamJobs.each{ Map thisJob ->
       timestamps()
       colorizeOutput 'xterm'
       credentialsBinding {
-        string("GITHUB_ACCESS_TOKEN", defaults.github.accessTokenCredentialsID)
-        string("GCSKEY", "6561701c-b7b4-4796-83c4-9d87946799e4")
-        string("SLACK_INCOMING_WEBHOOK_URL", defaults.slack.webhookURL)
+        string("GITHUB_ACCESS_TOKEN", "GITHUB_ACCESS_TOKEN")
+        string("GCSKEY", "GCSKEY")
+        string("SLACK_INCOMING_WEBHOOK_URL", "95f29b21-3cd5-44b3-9a7b-c0b8bbf77b5d")
       }
     }
 
@@ -269,13 +269,13 @@ downstreamJobs.each{ Map thisJob ->
           cd ${workdir}
 
           git_commit="\$(git checkout "\${TAG}" && git rev-parse HEAD)"
-          revision_image=quay.io/deisci/workflow-cli-dev:"\${git_commit:0:7}"
+          revision_image=quay.io/hephyci/workflow-cli-dev:"\${git_commit:0:7}"
 
           build-darwin-cli-binary ${thisJob.target}
 
           docker run \
             -e GCS_KEY_JSON=\"\${GCSKEY}\" \
-            -v "\${GOPATH}/src/github.com/deis/workflow-cli/_dist":/workdir/_dist \
+            -v "\${GOPATH}/src/github.com/teamhephy/workflow-cli/_dist":/workdir/_dist \
             -w /workdir \
             --rm "\${revision_image}" sh -c '${upload_script}'
         """.stripIndent().trim()

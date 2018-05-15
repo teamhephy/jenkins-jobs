@@ -13,14 +13,14 @@ repos.each { Map repo ->
           <li>Unless TAG is set (manual trigger), this job only runs off the latest tag.</li>
           <li>The commit at HEAD of tag is then used to locate the release candidate image(s).</li>
           <li>Kicks off downstream e2e job to vet candidate image(s).</li>
-          <li>Provided e2e tests pass, retags release candidate(s) with official semver tag in the 'deis' registry orgs.</li>
+          <li>Provided e2e tests pass, retags release candidate(s) with official semver tag in the 'hephy' registry orgs.</li>
         </ol>
       """.stripIndent().trim()
 
       scm {
         git {
           remote {
-            github("deis/${repo.name}")
+            github("teamhephy/${repo.name}")
             credentials(defaults.github.credentialsID)
             refspec('+refs/tags/*:refs/remotes/origin/tags/*')
           }
@@ -101,7 +101,7 @@ repos.each { Map repo ->
         shell main
 
         // Downstream jobs/pipeline START
-        // Trigger job to promote candidate image to 'prod' (deis) image registries
+        // Trigger job to promote candidate image to 'prod' (hephy) image registries
         conditionalSteps {
           condition { status('SUCCESS', 'SUCCESS') }
           steps {

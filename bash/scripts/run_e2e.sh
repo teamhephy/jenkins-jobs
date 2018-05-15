@@ -19,7 +19,7 @@ run-e2e() {
   local image="${E2E_RUNNER_IMAGE}"
   if [ -n "${E2E_RUNNER_SHA}" ]; then
     image_tag="git-${E2E_RUNNER_SHA:0:7}"
-    image="quay.io/deisci/e2e-runner:${image_tag}"
+    image="quay.io/hephyci/e2e-runner:${image_tag}"
   fi
 
   docker pull "${image}" # bust the cache as tag may be canary

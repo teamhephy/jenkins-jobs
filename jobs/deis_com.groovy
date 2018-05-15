@@ -2,14 +2,14 @@ def workspace = new File(".").getAbsolutePath()
 if (!new File("${workspace}/common.groovy").canRead()) { workspace = "${WORKSPACE}"}
 evaluate(new File("${workspace}/common.groovy"))
 
-repo_name = 'deis.com'
-downstreamJobName = 'deis-com-deploy'
-slackChannel = '#marketing'
+repo_name = 'teamhephy.com'
+downstreamJobName = 'teamhephy-com-deploy'
+slackChannel = '#ci'
 
-job("deis-com-master") {
+job("teamhephy-com-master") {
   description """
     <ol>
-      <li>Watches the <a href="https://github.com/deisthree/${repo_name}">${repo_name}</a> repo for a commit to master</li>
+      <li>Watches the <a href="https://github.com/teamhephy/${repo_name}">${repo_name}</a> repo for a commit to master</li>
       <li>Kicks off downstream ${downstreamJobName} job to deploy docs</li>
     </ol>
   """.stripIndent().trim()
@@ -17,7 +17,7 @@ job("deis-com-master") {
   scm {
     git {
       remote {
-        github("deis/deis.com")
+        github("teamhephy/teamhephy.com")
         credentials(defaults.github.credentialsID)
       }
       branch('${DEIS_COM_BRANCH}')
@@ -64,7 +64,7 @@ job("deis-com-master") {
       string("SLACK_INCOMING_WEBHOOK_URL", defaults.slack.webhookURL)
     }
     parameters {
-      stringParam('DEIS_COM_BRANCH', 'master', 'deis.com branch to build')
+      stringParam('DEIS_COM_BRANCH', 'master', 'teamhephy.com branch to build')
     }
   }
 
@@ -79,7 +79,7 @@ job("deis-com-master") {
   }
 }
 
-job("deis-com-pr") {
+job("teamhephy-com-pr") {
   description """
     <ol>
       <li>Watches the ${repo_name} repo_name for pull requests</li>
@@ -89,7 +89,7 @@ job("deis-com-pr") {
   scm {
     git {
       remote {
-        github("deis/${repo_name}")
+        github("teamhephy/${repo_name}")
         credentials(defaults.github.credentialsID)
         refspec('+refs/pull/*:refs/remotes/origin/pr/*')
       }
@@ -108,12 +108,12 @@ job("deis-com-pr") {
   }
 
   triggers {
-    pullRequest {
-      admin('deis-admin')
+    githubPullRequest {
+      admin('teamhephy-admin')
       cron('H/5 * * * *')
       useGitHubHooks()
       triggerPhrase('OK to test')
-      orgWhitelist(['deis'])
+      orgWhitelist(['teamhephy'])
       allowMembersOfWhitelistedOrgsAsAdmin()
       // this plugin will update PR status no matter what,
       // so until we fix this, here are our default messages:

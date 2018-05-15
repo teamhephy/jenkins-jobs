@@ -2,20 +2,20 @@ def workspace = new File(".").getAbsolutePath()
 if (!new File("${workspace}/common.groovy").canRead()) { workspace = "${WORKSPACE}"}
 evaluate(new File("${workspace}/common.groovy"))
 
-name = 'deis-io-deploy'
+name = 'teamhephy-info-deploy'
 slackChannel = '#marketing'
 
 job(name) {
   description """
     <ol>
-      <li>Compiles and deploys <a href="https://deis.io">deis.io</a></li>
+      <li>Compiles and deploys <a href="https://teamhephy.info">teamhephy.info</a></li>
     </ol>
   """.stripIndent().trim()
 
   scm {
     git {
       remote {
-        github('${DEIS_IO_ORG}/deis.io')
+        github('${DEIS_IO_ORG}/teamhephy.info')
           credentials(defaults.github.credentialsID)
       }
       branch('${DEIS_IO_BRANCH}')
@@ -59,10 +59,10 @@ job(name) {
       string("DEIS_PASSWORD", "201494de-a097-4a60-aaa3-6d16a930dabd")
     }
     parameters {
-      stringParam('QUAY_USERNAME', 'deis+jenkins', 'Quay account name')
-      stringParam('QUAY_EMAIL', 'deis+jenkins@deis.com', 'Quay email address')
-      stringParam('DEIS_IO_ORG', 'deis', 'GitHub organization to use.')
-      stringParam('DEIS_IO_BRANCH', 'gh-pages', 'deis.io branch to deploy')
+      stringParam('QUAY_USERNAME', 'hephy+jenkins', 'Quay account name')
+      stringParam('QUAY_EMAIL', 'kingdon@teamhephy.com', 'Quay email address')
+      stringParam('DEIS_IO_ORG', 'teamhephy', 'GitHub organization to use.')
+      stringParam('DEIS_IO_BRANCH', 'gh-pages', 'teamhephy.info branch to deploy')
     }
   }
 
@@ -75,7 +75,7 @@ job(name) {
       docker login -e="\$QUAY_EMAIL" -u="\$QUAY_USERNAME" -p="\$QUAY_PASSWORD" quay.io
       make prep build build-image push
 
-      curl -sSL http://deis.io/deis-cli/install-v2.sh | bash
+      curl -sSL http://teamhephy.info/hephy-cli/install-v2.sh | bash
       export PATH="\$(pwd):\$PATH"
 
       make deploy

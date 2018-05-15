@@ -49,8 +49,8 @@ job(name) {
   }
 
   parameters {
-    stringParam('QUAY_USERNAME', 'deis+jenkins', 'Quay account name')
-    stringParam('QUAY_EMAIL', 'deis+jenkins@deis.com', 'Quay email address')
+    stringParam('QUAY_USERNAME', 'hephy+jenkins', 'Quay account name')
+    stringParam('QUAY_EMAIL', 'kingdon@teamhephy.com', 'Quay email address')
   }
 
   wrappers {
@@ -75,7 +75,7 @@ job(name) {
       docker login -e="\$QUAY_EMAIL" -u="\$QUAY_USERNAME" -p="\$QUAY_PASSWORD" quay.io
       make build build-image push
 
-      curl -sSL http://deis.io/deis-cli/install-v2.sh | bash
+      curl -sSL http://teamhephy.info/hephy-cli/install-v2.sh | bash
       export PATH="\$(pwd):\$PATH"
 
       make deploy

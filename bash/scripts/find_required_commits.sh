@@ -9,7 +9,7 @@ find-required-commits() {
 
   # Looks specifically for matches of '[rR]equires <repo>#<pr_number>',
   # e.g., "requires builder#123, Requires router#567"
-  reqs=$(echo "${commit_description}" | grep -o "[Rr]equires \(deis\/\)\?[-a-z0-9]*#[0-9]\{1,9\}" | grep -o "[-a-z0-9]*#[0-9]\{1,9\}") || true
+  reqs=$(echo "${commit_description}" | grep -o "[Rr]equires \(teamhephy\/\)\?[-a-z0-9]*#[0-9]\{1,9\}" | grep -o "[-a-z0-9]*#[0-9]\{1,9\}") || true
 
   if [ "${reqs}" != "" ]; then
     # split on whitespace into array of '<repo>#<pr_number>' values
@@ -44,8 +44,8 @@ get-pr-commits() {
 
   resp=$(curl \
   -sSL \
-  --user deis-admin:"${GITHUB_ACCESS_TOKEN}" \
-  "https://api.github.com/repos/deis/${repo_name}/pulls/${pr_number}/commits")
+  --user teamhephy-admin:"${GITHUB_ACCESS_TOKEN}" \
+  "https://api.github.com/repos/teamhephy/${repo_name}/pulls/${pr_number}/commits")
 
   echo "${resp}" >&2
   echo "${resp}" | jq '.[].sha'
